@@ -34,3 +34,19 @@ The entire code is shared here. This section will cover the major things covered
     5. In this step we have to convert these distributions of expected goals to expected points. Each clean sheet is worth 4 points for a defending player. Each Goal is worth 4 or 5 points for an attcking player depending on if he is a forward or mid fielder. The expected points per defender is the probability that the number of goals will be 0 x 4 points. For a poisson distribution, probability of getting 0 goals reduces to e^(-mean_expected_goals). For the expected points per attacking player, we just need to multiply estimated number of goals with the points per goal divided by number of possible attacking players to choose from. The last variable 'Likelihood of Chosen Attacking Player to score' is subject to change depending on your skill. If you have the option to choose an attacking player and you are always able to choose the right one, you can enter this value as 1. I have used a placeholder value of 1/3 from past experience.
     
 3. Optimization - We need to build a convex optimization problem preferably linear to get our final results. But linearizing functions is tricky. The Goal of our optimization model is to maximize the expected points. The constraints will be the maximum defenders, maximum attacking players, maximum players from a team. It will also be tricky to model the use of wild cards, which allows you to shuffle entire teams without losing points. Another key modeling requirement is, if it is worth losing 4 points to accomodate an extra transfer. This will occur more often if you choose a higher value for the variable 'Likelihood of Chosen Attacking Player to score'. Skipping the mathematical tricks to linearize the model, we have obtained the optimal transfer schedule for players.
+
+# Results
+Since this season is half done, I have provided the expectation vs reality to see how well our model predicted the results so far. I obtained an MSPE of about 1.66 goals and MAD of about 1 Goal. 
+
+Provided below are some of the sanity checks for Goodness of Fit
+
+![Residual Distribution 1](https://github.com/Arunachalam-M/FPL-Transfer-Optimization/blob/master/Residuals1.jpg)
+![Residual Distribution 2](https://github.com/Arunachalam-M/FPL-Transfer-Optimization/blob/master/Residuals2.jpg)
+
+We can observe that the residuals are evenly distributed about 0 and the variance of the residuals also seems acceptable. We can of course see some Outliers for eg. the Man City	- Watford match which was predicted to have a 3.14 -	0.71 result, but ended up 8 - 0 or the Southampton -	Leicester	fixture which was estimated to have a result along 1.32	- 2.13,	but the actual result was 0 - 9. We certainly cannot expect to predict suck occurrences as even the poisson model would suggest that there is some small probability of observing such results. We nevertheless try to optimize our decisions based on the most likely outcomes.
+
+Please find the plots for the Home Attack Strength metric for each team across the past 5 years
+
+![Exponential Smoothing](https://github.com/Arunachalam-M/FPL-Transfer-Optimization/blob/master/Forecasts.png)
+
+The Results Analysis file and the Final Output Final_Transfer_Plan are also included in the repository for further analysis.
