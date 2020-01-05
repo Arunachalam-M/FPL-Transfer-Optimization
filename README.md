@@ -43,7 +43,7 @@ Provided below are some of the sanity checks for Goodness of Fit
 ![Residual Distribution 1](https://github.com/Arunachalam-M/FPL-Transfer-Optimization/blob/master/Residuals1.jpg)
 ![Residual Distribution 2](https://github.com/Arunachalam-M/FPL-Transfer-Optimization/blob/master/Residuals2.jpg)
 
-We can observe that the residuals are evenly distributed about 0 and the variance of the residuals also seems acceptable. We can, of course, see some Outliers for eg. the Man City	- Watford match which was predicted to have a 3.14 -	0.71 result, but ended up 8 - 0 or the Southampton -	Leicester	fixture which was estimated to have a result along 1.32	- 2.13,	but the actual result was 0 - 9. We certainly cannot expect to predict suck occurrences as even the Poisson model would suggest that there is some small probability of observing such results. We nevertheless try to optimize our decisions based on the most likely outcomes.
+We can observe that the residuals are evenly distributed about 0 and the variance of the residuals also seems acceptable. We can, of course, see some Outliers for eg. the Man City	- Watford match which was predicted to have a 3.14 -	0.71 result, but ended up 8 - 0 or the Southampton -	Leicester	fixture which was estimated to have a result along 1.32	- 2.13,	but the actual result was 0 - 9. We certainly cannot expect to predict such occurrences as even the Poisson model would suggest that there is some small probability of observing such results. We nevertheless try to optimize our decisions based on the most likely outcomes.
 
 Please find the plots for the Home Attack Strength metric for each team across the past 5 years
 
